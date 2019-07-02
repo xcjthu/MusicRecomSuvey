@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --一些基本设置，各种包的扩展--
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A4纸张大小
+\documentclass[UTF8,a4paper,10pt]{ctexart}
+% 页边距
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry}
+% 设置章标题居左
+\CTEXsetup[format={\Large\bfseries}]{section} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -- 专门设置页眉页脚 --
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% bfseries
+% 页眉
+\lhead{}
+\chead{社交媒体用户的音乐推荐}
+\rhead{}
+% 页脚
+\lfoot{}
+\cfoot{第 \thepage 页}
+\rfoot{}
+% 修改格式
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -- 设置字体 --compile using Xelatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -- 中文字体 --
+%\setmainfont{Microsoft YaHei}  % 微软雅黑
+%\setmainfont{YouYuan}  % 幼圆    
+%\setmainfont{NSimSun}  % 新宋体
+%\setmainfont{KaiTi}    % 楷体
+%\setmainfont{SimSun}   % 宋体
+%\setmainfont{SimHei}   % 黑体
+% -- 英文字体 --
+\usepackage{times}
+%\usepackage{mathpazo}
+%\usepackage{fourier}
+%\usepackage{charter}
+%\usepackage{helvet} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --设置水印--
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 所有页加水印
+%\usepackage{draftwatermark}
+% 只有第一页加水印         
+%\usepackage[firstpage]{draftwatermark}
+% 设置水印内容 
+%\SetWatermarkText{Water-Mark}
+% 设置水印logo           
+%\SetWatermarkText{\includegraphics{fig/ZJDX-WaterMark.eps}}
+% 设置水印透明度 0-1         
+%\SetWatermarkLightness{0.9}
+% 设置水印大小 0-1             
+%\SetWatermarkScale{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --用于标注代码的样式--
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
+\usepackage{listings} 
+\lstset{						 % 下面是一些设置
+  language=python,               % 代码语言
+  basicstyle=\footnotesize,      % 代码的尺寸大小
+  numbers=left,                  % 将行号写到左边
+  numberstyle=\tiny\color{gray}, % 行号的风格
+  stepnumber=2,                  % 行与行的间隔标号，如果为1，则每一行都会被标记行号
+  numbersep=5pt,                 % 行号与代码之间的间距
+  backgroundcolor=\color{white}, % 如果选择背景色，你必须加 \usepackage{color}，color可以是其他色
+  showspaces=false,              % show spaces adding particular underscores
+  showstringspaces=false,        % underline spaces within strings
+  showtabs=false,                % show tabs within strings adding particular underscores
+  frame=single,                  % adds a frame around the code
+  rulecolor=\color{black},       % if not set, the frame-color may be changed on line-breaks 									within not-black text (e.g. commens (green here))
+  tabsize=2,                     % sets default tabsize to 2 spaces
+  captionpos=b,                  % sets the caption-position to bottom
+  breaklines=true,               % sets automatic line breaking
+  breakatwhitespace=false,       % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                % show the filename of files included with \lstinputlisting;
+                                 % also try caption instead of title
+  keywordstyle=\color{blue},     % keyword style
+  commentstyle=\color{dkgreen},  % comment style
+  stringstyle=\color{mauve},     % string literal style
+  escapeinside={\%*}{*)},        % if you want to add LaTeX within your code
+  morekeywords={*,...}           % if you want to add more keywords to the set
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --其他可用的建设性模板(仅供复制修改)--
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --用于创建表格--
+%\begin{table}[htbp]
+%		\caption{Title of table} \label{tab:table}
+%		\centering
+%		\addtolength{\tabcolsep}{-0mm} % 控制列间距
+%		\begin{tabular}{ccccc}
+%			\toprule[0.75pt]	% package booktabs
+%			\multicolumn{4}{c}{table head} \\
+%			\midrule[0.5pt]	% package booktabs
+%			\multirow{4}{*}{text} & 1 & 2 & 3 & 4 \\  % package multirow
+%			& 5 & 6 & 7 & 8 \\
+%			\cmidrule[0.5pt]{2-4}	% package booktabs
+%			& 9 & 10 & 11 & 12 \\
+%			& 13 & 14 & 15 & 16 \\
+%			\bottomrule[0.75pt]	% package booktabs
+%		\end{tabular}
+%\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --写个算法伪代码流程图--
+%\begin{algorithm}
+%		\caption{Title of the Algorithm}
+%		\label{algo:ref}
+%		\begin{algorithmic}[1]
+%			\REQUIRE some words.  % this command shows "Input"
+%			\ENSURE ~\\           % this command shows "Initialized"
+%			some text goes here ... \\
+%			\WHILE {\emph{not converged}}
+%			\STATE ... \\  % line number at left side
+%			\ENDWHILE
+%			\RETURN this is the lat part.  % this command shows "Output"
+%		\end{algorithmic}
+%\end{algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{color}
+\usepackage{cite}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+ 
+\usepackage{amsmath, amsfonts, amssymb} % math equations, symbols
+\usepackage[english]{babel}
+\usepackage{color}      % color content
+\usepackage{graphicx}   % import figures
+\usepackage{url}        % hyperlinks
+\usepackage{bm}         % bold type for equations
+
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+% use Input in the format of Algorithm
+\renewcommand{\algorithmicrequire}{ \textbf{Input:}}
+% use Initialize in the format of Algorithm       
+\renewcommand{\algorithmicensure}{ \textbf{Initialize:}} 
+% use Output in the format of Algorithm  
+\renewcommand{\algorithmicreturn}{ \textbf{Output:}}       
+ 
+ 
+ 
+ 
+  
+% 超链接
+%\usepackage{hyperref} %bookmarks
+%\hypersetup{colorlinks, bookmarks, unicode} %unicode
+% 
+% 
+% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --正文如下--
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 一些前期工作
+% 文章题目
+\title{\textbf{社交媒体用户的音乐推荐文献综述}}
+% 作者
+\author{ 计63 肖朝军 2016011302 \\ 计63 曹晨阳 2015010603 \\ 计63 张泽阳 2016} %\thanks{学号：2016310200112} }
+% 日期(还没想到怎么删)
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+    \maketitle %输出标题
+        
+ 
+%\newpage%另起一页
+% \begin{abstract}
+% 文献综述就不要摘要了
+
+%\centering
+% \textbf{关键字：}关键词1 关键词2
+% \end{abstract}
+\thispagestyle{empty}
+
+
+
+%标题栏
+
+\input{data/chap01}
+\input{data/chap02}
+\input{data/chap03}
+\input{data/chap04}
+
+\bibliography{ref}
+%\section*{参考文献}
+
+\end{document}
+%结束
