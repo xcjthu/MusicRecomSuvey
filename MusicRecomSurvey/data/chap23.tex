@@ -1,0 +1,19 @@
+\subsection{Baseline}
+为了比对不同算法模型和我们的模型之间的性能差异，我们选择了一些在推荐系统中用到的方法作为Baseline，在我们的数据集上进行了测试，具体的Baseline如下：
+\begin{itemize}
+    \item Neural Collaborative Filtering(NCF)\cite{he2017neural}：神经网络协同过滤。使用神经网络方法对传统的协同过滤算法进行扩展。
+    \item DeepInterest Network(DIN)\cite{zhou2018deep}：从用户历史交互数据中抽取用户兴趣，实现物品与兴趣之间的匹配。
+    \item DeepFM\cite{guo2017deepfm}：将因子分解机(Factorization Machine, FM)中的部分结构使用神经网络进行扩展。使用因子分解机获取低阶组合特征表示，神经网络获取高阶组合特征表示，综合使用这些特征信息进行推荐。
+    \item xDeepFM\cite{lian2018xdeepfm}：DeepFM的改进版，将DeepFM中的因子分解机替代为Compressed Interaction Network(CIN)，利用CIN获取高维特征组合
+\end{itemize}
+上面的若干模型是近些年来使用神经网络进构造推荐系统中较为经典的结构，但是为了使其能够正常处理冷启动的情况，我们在这些模型的基础上结合了DropoutNet\cite{volkovs2017dropoutnet}。DropoutNet是针对于冷启动问题提出的模型，该模型在输入时舍弃了latent factor的信息，来模拟冷启动的场景。与上面的若干模型结合，能够使其对于冷启动场景能够更好地适应。
+
+为了评价不同的模型，我们选取了两个评价指标。首先是AUC，其中$rank_{i}$表示第$i$条样本得分的排序，$M$和$N$分别为正负样本的数量。
+\begin{equation}
+    AUC = \frac{\sum_{ins_i \in positive} rank_{ins_i} - \frac{M(M+1)}{2}}{M \times N}
+\end{equation}
+
+此外还有准确率指标Accuracy：
+\begin{equation}
+    Accu = \frac{\#\{CorrectSet\}}{\#\{TestSet\}}
+\end{equation}

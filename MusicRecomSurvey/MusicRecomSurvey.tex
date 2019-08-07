@@ -146,7 +146,8 @@
 \usepackage{epsfig}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-
+\usepackage{subfigure}
+\usepackage{pdfpages}
 
 % use Input in the format of Algorithm
 \renewcommand{\algorithmicrequire}{ \textbf{Input:}}
@@ -172,11 +173,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 一些前期工作
 % 文章题目
-\title{\textbf{社交媒体用户的音乐推荐文献综述}}
+% \title{\textbf{社交媒体用户的音乐推荐文献综述}}
+% \title{\textbf{社交媒体用户的音乐推荐实验方案设计}}
+%\title{\textbf{社交媒体用户的音乐推荐程序说明与系统性能报告}}
+\title{\textbf{社交媒体用户的音乐推荐实验方案改进说明}}
+% \title{\textbf{社交媒体用户的音乐推荐}}
 % 作者
-\author{ 计63 肖朝军 2016011302 \\ 计63 曹晨阳 2015010603 \\ 计63 张泽阳 2016} %\thanks{学号：2016310200112} }
+\author{ 计63 肖朝军 2016011302 \\ 计63 曹晨阳 2015010603 \\ 计63 张泽阳 2016010425} %\thanks{学号：2016310200112} }
 % 日期(还没想到怎么删)
-\date{\today}
+%\date{\today}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
     \maketitle %输出标题
@@ -192,18 +197,42 @@
 \thispagestyle{empty}
 
 
-
+\tableofcontents
+\clearpage
 %标题栏
-
-\input{data/chap01}
-\input{data/chap02}
-\input{data/chap03}
-\input{data/chap04}
-\input{data/chap05}
-\input{data/chap06}
-
+%\section{文献综述}
+%\input{data/chap01}
+%\input{data/chap02}
+%\input{data/chap03}
+%\input{data/chap04}
+%\input{data/chap05}
+%\input{data/chap06}
+%\section{实验方案设计}
+%\input{data/chap11}
+%\input{data/chap12}
+%\input{data/chap13}
+%\input{data/chap14}
+%\section{程序说明与系统性能报告}
+%\input{data/chap21}
+%\input{data/chap22}
+%\input{data/chap23}
+%\input{data/chap24}
+%\input{data/chap25}
+%\input{data/chap26}
+\section{实验方案改进说明}
+\input{data/chap3}
+%\section{总结与展望}
+%\input{data/chap4}
+\bibliographystyle{ieeetr}
 \bibliography{ref}
-%\section*{参考文献}
 
+%\section*{附录}
+%\subsection*{附录1：程序设计报告}
+%\subsection*{附录2：Demo设计报告}
+%\subsection*{附录3：程序代码}
+%全部的代码均在Github：https://github.com/Caochy/MusicRecom
+
+%\includepdf[pages={1,2,3}]{data/readme.pdf}
+%\includepdf[pages={1,2,3,4}]{data/demo_readme.pdf}
 \end{document}
 %结束

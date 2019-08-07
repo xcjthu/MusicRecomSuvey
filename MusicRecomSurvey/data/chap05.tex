@@ -1,1 +1,51 @@
-\section{音乐推荐系统分析}
+\subsection{推荐系统评价指标}
+\subsubsection{基于估计准确度的评价指标}
+对于推荐系统，一个较为核心的任务就是对于未知用户评分进行估计。因为如果我们已经知道了用户对于所有内容的评分，无论是真实进行过评价的还是潜在的评价，我们都能够根据这样的评分很准确地给出效果很好的推荐。但是事实上我们并不能知道用户对于一个他并未评价过的内容的评分，所以我们必须通过估计的方法得到一个估计值。所以评价推荐系统的好坏，一个很自然的想法就是比较这样的估计值和真实值之间的误差。如果一种方法的估计值和真实值相差很小，那么推荐系统的推荐结果就与真实情况很近似了，这样的推荐系统自然是性能较好的。所以在这样的思路上，提出了如下的几种评价指标\cite{EVA}：
+\paragraph{MAE}
+MAE(Mean Absolute Error)指的是绝对误差均值\cite{MAE}：
+\begin{equation}
+    MAE = \frac{\sum_{i, j}|\hat p_{ij} - p_{ij}|}{N}
+\end{equation}
+这里的$N$表示所有用户的所有评分的数量。可见当MAE越小时，估计值与真实值的偏差就越小，预测越准确。
+
+\paragraph{NMAE}
+NMAE(Normalized Mean Absolute Error)是对MAE进行了正规化处理之后的参数，使其能够以百分比的形式进行解释\cite{MAE}。其表达式为：
+\begin{equation}
+    NMAE = \frac{MAE}{max\{p_{ij}\} - min\{p_{ij}\}}
+\end{equation}
+其中$max\{p_{ij}\}$和$min\{p_{ij}\}$分别表示评分的上界和下界。
+
+\paragraph{RMSE}
+RMSE(Root Mean Squared Error)指的是均方根误差，也是常见的判断估计量好坏的指标之一：
+\begin{equation}
+    RMSE = \sqrt{\frac{1}{N}\sum_{i,j}(\hat p_{ij} - p_{ij})}
+\end{equation}
+不难看出RMSE相比MAE，放大了每个评分估计值的绝对误差的影响。
+
+\subsubsection{基于推荐行为的评价指标}
+上面的评价指标虽然能够表述推荐系统在进行预测时性能的好坏，但是推荐系统并不只是简单地预测系统，因为其用户的行为是有多样性的，比如一些用户可能会对于自己不熟悉的内容感兴趣，而这类内容和该用户之前的评价内容是相对独立的。所以为了更好地描述该推荐系统而非预测系统的性能，需要提出更加有针对性的判断结果。
+
+\paragraph{ROC}
+ROC(Receiver Operating Characteristic)曲线指的是一种对于分类器性能的描述，适用于二分类器的分类结果分析\cite{EVA}。首先根据测试结果，对于如下的表格中的四项进行填写，行和列跟别表示用户实际的评价和模型预测的评价。
+\begin{table}[htbp]
+		\caption{Confusion Matrix} \label{tab:table}
+		\centering
+		\begin{tabular}{ccccc}
+			\hline	% package booktabs
+			& Actual & Predicted &  \\
+			\hline	% package booktabs
+			&  & Positive & Negative   \\
+			& Positive & TP & FN  \\
+			& Negative & FP & TN  \\
+			\hline	% package booktabs
+		\end{tabular}
+\end{table}
+接下来定义两个评价指标：
+\begin{align}
+    TPR &= \frac{TP}{TP+FN}\\
+    FPR &= \frac{FP}{FP+TN}
+\end{align}
+可见TPR描述了对于判对样本中的正样本率，而FPR描述了负样本中的错判率。以TPR为Y轴，FPR为X轴，绘制出的曲线，就是模型的ROC曲线。接下来，每一个模型都可以通过实验对应于一条ROC曲线，需要讨论的就是如何比较两个不同的模型的好坏。通常点越接近于左上角，则说明模型的命中率TPR越高，错判率FPR越低，从而可以认为分类器性能越好。因此如果对于两条ROC曲线，一条曲线在另一条的左上，则说明前者的性能要优于后者。但是在一些情况下，两模型的ROC曲线是相交的，此时如何给出模型性能的比较就需要引入其他的量。
+
+\paragraph{AUC}
+AUC(Area Under the ROC Curve)是ROC曲线与$x=0$以及$y=1$两条直线围成区域的面积。由上面的讨论可以知道当ROC曲线越靠近左上方时，其AUC越大，对应的模型的分辨性能就越高\cite{AUC}。AUC的计算方法通常是数值积分法，即利用一些数值近似的方法，求解曲线下方面积的大小\cite{AUCCalculate}。

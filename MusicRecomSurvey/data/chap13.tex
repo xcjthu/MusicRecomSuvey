@@ -1,0 +1,32 @@
+\subsection{其他工作与计划}
+在确定了模型的基本形式的同时，我们也开始对于一部分的BaseLine进行实验，并进行了一部分的准备工作。
+
+\subsubsection{处理数据}
+我们首先对于手中的数据集进行了一定的处理：对于用户特征，我们选择使用23维的公众号阅读量来进行表征，并进行了相应的处理；对于音乐特征，我们选取了歌词的LDA，音频信息，歌手，歌曲类型等数据；对于交互信息，我们使用评分来描述用户对歌曲的行为，例如根据用户听歌的时长，是否收藏，是否转发等指标，将其转化为一个0~15的评分，来表示用户对于歌曲的喜好程度；此外，我们对于数据集进行了一定的划分，得到了训练集和测试集。
+
+\subsubsection{BaseLine}
+我们选取了三个BaseLine对于实验结果进行比较，分别为：
+\begin{itemize}
+    \item LRMM\cite{LRMM}
+    \item DeepFM\cite{guo2017deepfm}
+    \item CML\cite{CML}
+\end{itemize}
+
+在之后的工作中，我们希望能够实现三个关于Cold Start的BaseLine，来对于我们模型中处理冷启动的性能进行比较和评价：
+\begin{itemize}
+    \item Low-Rank Linear Cold-Start Recommendation from Social Data (2017)\cite{sedhain2017low}
+    \item Collaborative filtering and deep learning based recommendation system for cold start items (2017)\cite{wei2017collaborative}
+    \item From Zero-Shot Learning to Cold-Start Recommendation (2019)\cite{li2019zero}
+\end{itemize}
+
+此外，我们在之后也希望能够在其他数据集上对于我们的模型进行验证，如：
+\begin{itemize}
+    \item LastFM\cite{Zafarani+Liu:2009}
+    \item MovieLens\cite{Harper:2015:MDH:2866565.2827872}
+\end{itemize}
+
+\subsubsection{DEMO设计}
+由于我们当前的关注点更多的在于模型的设计和实现，所以我们希望能够在实现模型的同时，设计一些简单的Demo来展示我们的数据集，例如展示稀疏数据下的推荐效果比对，以及基于音乐相似度的推荐理由。
+
+\subsubsection{Case Study}
+由于我们在实验中使用了用户和音乐的高阶特征，这就使得我们在模型的可解释性上有一定的欠缺，所以我们希望能够通过一些Case Study来分析我们的模型的实际情况，并通过分析典型的用户画像，对应其推荐的结果，评价我们的模型。

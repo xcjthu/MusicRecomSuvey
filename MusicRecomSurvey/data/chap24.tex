@@ -1,0 +1,80 @@
+\subsection{实验结果}
+经过测试，我们在自己的数据集上对于不同的模型进行了测试得到的结果如下：
+\begin{table}[htbp]
+\centering
+\caption{冷启动实验结果}
+\begin{tabular}{|l|l|l|l|}
+\hline
+
+Methods & Accu & AUC \\ \hline
+NCF &  0.5000 & 0.5092 \\ \hline
+DropoutNet+DIN & 0.6206 & 0.6634 \\ \hline
+DropoutNet+DeepFM & 0.5796 & 0.6999 \\ \hline
+DropoutNet+xDeepFM & 0.6027 & 0.7112 \\ \hline
+Ours & \textbf{0.6547} & \textbf{0.7249} \\ \hline
+
+\end{tabular}
+\end{table}
+
+从上面的表格中，我们可以得到一些结论。首先，对于非基于内容的模型NCF，其是通过交互信息来对评价进行预测的，所以在面对音乐的冷启动场景时，并不存在这样的交互信息，所以无法正确进行工作，所以该模型在本数据集上的准确率是0.5000，相当于随机猜测。在这样的冷启动问题中，如何对于全新的音乐给出特征上的表示和描述就是关键的步骤了。从实验的结果中可以看出，我们基于用户信息的音乐特征表示是优于其他的方法的，从而在冷启动数据上的两个指标中均能取得更好的结果。
+
+接下来，我们希望查看我们的模型在非冷启动场景下的表现。所以我们将模型在非冷启动的数据集上进行测试，得到如表4的结果：
+
+\begin{table}[htbp]
+\centering
+\caption{非冷启动实验结果}
+\begin{tabular}{|l|l|l|l|}
+\hline
+
+Methods & Accu & AUC \\ \hline
+DIN & 0.9009 & 0.9630 \\ \hline
+Ours & 0.9156 & 0.9689 \\ \hline
+
+\end{tabular}
+\end{table}
+
+可见我们的模型在非冷启动的状况下也能取得优于其他模型的表现。
+
+另外，我们还通过另外一组实验验证了我们的模型在面对Feature缺失情况下的表现。得到的结果如表5：
+\begin{table}
+\centering
+\caption{Feature缺失实验结果}
+\begin{tabular}{|l|l|l|l|}
+\hline
+
+Missing Feature & Accu & AUC \\ \hline
+音乐风格 & 0.6504 & 0.7176 \\ \hline
+音乐音频 & 0.5957 & 0.6313 \\ \hline
+音乐歌手 & 0.6333 & 0.7012 \\ \hline
+用户ID & 0.6541 & 0.7193 \\ \hline
+用户年龄 & 0.6417 & 0.7160 \\ \hline
+用户性别 & 0.6464 & 0.7214 \\ \hline
+用户阅读文章类型 & 0.6519 & 0.7206 \\ \hline
+用户朋友圈文本 & 0.6469 & 0.7146 \\ \hline
+未缺失 & 0.6547 & 0.7249 \\ \hline
+
+\end{tabular}
+\end{table}
+
+通过这样的实验结果，我们可以评价各个Feature对于我们模型的“敏感程度”。比如对于音乐来讲，音乐风格缺失时的结果发生的变化很小，因为大多数的音乐都是“Pop 流行”类别的，所以很难通过音乐风格体现音乐的特征。而音乐音频，音乐歌手两项音乐的Feature对于模型有一定的影响，音乐音频的影响更大，这表明用户相比于歌手，考虑的更多的还是歌曲听起来的感觉。对于用户来讲，用户ID对于模型基本没有影响，用户的年龄，性别，阅读文章类型，朋友圈文本等内容均有一定的影响，但是影响并不算太大。为了比较我们的模型对于这些特征缺失的稳定性，我们选取了另一个模型来进行确实特征的测试，得到的比对结果如表6：
+
+\begin{table}
+\centering
+\caption{xDeepFM与我们模型的Feature缺失性能}
+\begin{tabular}{|l|l|l|l|}
+\hline
+
+Missing Feature & xDeepFM & Ours \\ \hline
+用户id & 0.7213 & 0.7193 \\ \hline
+用户年龄 & 0.7008 & 0.716 \\ \hline
+用户阅读文章类型 & 0.6928 & 0.7206 \\ \hline
+用户性别 & 0.7157 & 0.7214 \\ \hline
+音乐音频 & 0.5253 & 0.6313 \\ \hline
+音乐风格 & 0.6982 & 0.7176 \\ \hline
+音乐歌手 & 0.6699 & 0.7012 \\ \hline
+不缺失 & 0.7213 & 0.7249 \\ \hline
+
+\end{tabular}
+\end{table}
+
+可见在用户ID上，xDeepFM性能更好，但是这一特征对于模型并不是特别关键。而对于其它的特征，我们的模型在特征缺失时的性能能够比xDeepFM好很多。
